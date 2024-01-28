@@ -19,26 +19,6 @@ class Client
     }
 
     /**
-     * @return bool
-     */
-    public function isAuthorized(): bool
-    {
-
-        return (bool)$this->accessToken || (bool)$this->basicAuthCredentials;
-
-    }
-
-    /**
-     * @return false|string
-     */
-    public function getAccessToken(): false|string
-    {
-
-        return $this->accessToken;
-
-    }
-
-    /**
      * @return false|string
      */
     public function getBasicAuthCredentials(): false|string
