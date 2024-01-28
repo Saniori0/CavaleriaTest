@@ -60,6 +60,14 @@ if (!$CustomerOrder) {
 
 }
 
+$Product = $Client->getProduct($config["productID"]);
+
+if(!$Product){
+
+    exit("Товара {$config["productID"]} не существует");
+
+}
+
 print("Заказ успешно создан" . PHP_EOL);
 
 $OrderPosition = $Client->addPositionForCustomerOrder([
@@ -68,7 +76,8 @@ $OrderPosition = $Client->addPositionForCustomerOrder([
     "mediaType" => "application/json"
 ], $CustomerOrder["id"], [
     "quantity" => 3,
-    "discount" => 7
+    "discount" => 7,
+    "price" => $Product["salePrices"][0]["value"], // Получение первой цены, цены продажи
 ]);
 
 if (!$OrderPosition) {

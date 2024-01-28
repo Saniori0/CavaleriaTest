@@ -49,6 +49,7 @@ class Client
     }
 
     /**
+     * Auth request
      * @param string $method
      * @param string $endpoint
      * @param array $body
@@ -99,7 +100,7 @@ class Client
     /**
      * @return array|false
      */
-    public function getOrganization()
+    public function getOrganization(): false|array
     {
 
         try {
@@ -120,7 +121,7 @@ class Client
      * @param string $name
      * @return bool|array
      */
-    public function createCounterPartyByName(string $name): bool|array
+    public function createCounterPartyByName(string $name): false|array
     {
 
         try {
@@ -142,7 +143,7 @@ class Client
      * @param mixed $CounterPartyMetadata
      * @return array|false
      */
-    public function newCustomerOrder(mixed $OrganizationMetadata, mixed $CounterPartyMetadata)
+    public function newCustomerOrder(mixed $OrganizationMetadata, mixed $CounterPartyMetadata): false|array
     {
 
         try {
@@ -168,7 +169,7 @@ class Client
      * @param array $options
      * @return array|false
      */
-    public function addPositionForCustomerOrder(array $productMetadata, mixed $customerOrderID, array $options = [])
+    public function addPositionForCustomerOrder(array $productMetadata, mixed $customerOrderID, array $options = []): false|array
     {
 
         $body = $options;
@@ -204,6 +205,27 @@ class Client
                 "agent" => ["meta" => $CounterPartyMetadata],
                 "store" => ["meta" => $StoreMetadata]
             ], options: ["noErrors" => true]);
+
+        } catch (\Throwable $e) {
+
+            return false;
+
+        }
+
+        return $response;
+
+    }
+
+    /**
+     * @param string $productID
+     * @return bool|array
+     */
+    public function getProduct(string $productID): bool|array
+    {
+
+        try {
+
+            $response = $this->request("GET", "/entity/product/$productID", options: ["noErrors" => true]);
 
         } catch (\Throwable $e) {
 
