@@ -1,0 +1,15 @@
+{
+    "name": "saniori/cavaleria",
+    "autoload": {
+        "psr-4": {
+            "Saniori\\Cavaleria\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "saniori",
+            "email": "rodion2992@gmail.com"
+        }
+    ],
+    "require": {}
+}
