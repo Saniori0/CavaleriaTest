@@ -11,8 +11,8 @@ require "../vendor/autoload.php";
 $config = [
     "host" => "https://api.moysklad.ru/api/remap/1.2",
     "account" => [
-        "login" => "rodion2992@gmail.com",
-        "password" => "@!cavaleria##"
+        "login" => "",
+        "password" => ""
     ],
     "productID" => "172e0414-bdc5-11ee-0a80-17650026015e", // ID Товара "Тестовое задание"
     "storeID" => "4a930c5b-b899-11e7-7a31-d0fd00276a71"
